@@ -1,2 +1,2 @@
-# redux-in-vanilla-js
-Using redux in vanilla Js web app
+# Using Redux in Vanilla Js
+It is a basic counter example explaining how to use redux with vanilla Js.
