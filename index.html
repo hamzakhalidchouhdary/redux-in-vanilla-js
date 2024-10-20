@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redux in Vanilla Js</title>
+  </head>
+  <body>
+    <p id="count">0</p>
+    <button id="increase">+</button>
+    <button id="decrease">-</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.1/redux.min.js"></script>
+    <script>
+      const initialState = {
+        count: 0,
+      };
+
+      const reducer = (state = initialState, action) => {
+        switch (action.type) {
+          case "INCREMENT":
+            return { count: state.count + 1 };
+          case "DECREMENT":
+            return { count: state.count - 1 };
+          default:
+            return state;
+        }
+      };
+
+      const store = Redux.createStore(reducer);
+
+      const incrementAction = () => ({ type: "INCREMENT" });
+      const decrementAction = () => ({ type: "DECREMENT" });
+
+      store.subscribe(() => {
+        document.getElementById("count").innerText = store.getState().count;
+      });
+
+      document
+        .getElementById("increase")
+        .addEventListener("click", () => store.dispatch(incrementAction()));
+      document
+        .getElementById("decrease")
+        .addEventListener("click", () => store.dispatch(decrementAction()));
+    </script>
+  </body>
+</html>
